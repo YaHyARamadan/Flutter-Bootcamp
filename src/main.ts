@@ -93,7 +93,8 @@ const level3Chapters = [
   { num: '12', name: 'State Management', nameAr: 'إدارة الحالة', color: C.amber.c, bg: C.amber.b, points: ['مشكلة setState','مفهوم Global State','Provider package','ChangeNotifier class','notifyListeners()','ChangeNotifierProvider','MultiProvider','context.watch','context.read','Consumer widget','Selector widget'] },
   { num: '13', name: 'Project 2', nameAr: 'مشروع شامل (Todo App)', color: C.coral.c, bg: C.coral.b, points: ['تخطيط هيكل المشروع','lib/ folder structure','models/ folder','providers/ folder','screens/ folder','widgets/ folder','Task Model class','Task Provider','Home Screen','Add Task Screen','Settings Screen','Task Tile custom widget','دمج كل المفاهيم السابقة'] },
   { num: '14', name: 'Firebase', nameAr: 'الـ Backend جاهز', color: C.blue.c, bg: C.blue.b, points: ['ما هو Firebase','Firebase Console','Firebase CLI installation','FlutterFire CLI','flutterfire configure','firebase_core package','Firebase.initializeApp()','Firebase Authentication','Email & Password Auth','createUserWithEmailAndPassword','signInWithEmailAndPassword','signOut()','currentUser'] },
-  { num: '15', name: 'Final Projects', nameAr: 'مشاريع التخرج', color: C.green.c, bg: C.green.b, points: ['E-Commerce App','Chat App with Firebase','News App with REST API','Graduation Project','تخطيط المشروع','تصميم الـ UI/UX','اختيار الـ Architecture','النشر على Play Store','النشر على App Store','استمرار التعلم'] }
+  { num: '15', name: 'Responsive Design', nameAr: 'تصميم متجاوب', color: C.pink.c, bg: C.pink.b, points: ['MediaQuery','LayoutBuilder','Flexible & Expanded','OrientationBuilder','ResponsiveBuilder patterns','Platform-aware widgets','Adaptive layouts'] },
+  { num: '16', name: 'Final Projects', nameAr: 'مشاريع التخرج', color: C.green.c, bg: C.green.b, points: ['E-Commerce App','Chat App with Firebase','News App with REST API','Graduation Project','تخطيط المشروع','تصميم الـ UI/UX','اختيار الـ Architecture','النشر على Play Store','النشر على App Store','استمرار التعلم'] }
 ];
 
 const level4Chapters = [
@@ -113,7 +114,8 @@ const level4Chapters = [
   { num: '14', name: 'Async / Await / Future', nameAr: 'البرمجة غير المتزامنة', color: C.pink.c, bg: C.pink.b, points: ['async keyword','await keyword','Future.delayed','try / catch'] },
   { num: '15', name: 'REST APIs', nameAr: 'التواصل مع الإنترنت', color: C.pink.c, bg: C.pink.b, points: ['ما هو الـ API','REST architecture','HTTP Methods','GET request','POST request','PUT request','PATCH request','DELETE request','JSON format','jsonDecode / jsonEncode','http package','Uri.parse','http.get / http.post','Response object','statusCode (200, 201, 400, 404, 500)','Headers','Request Body','Model.fromJson factory','Model.toJson method','Dio package'] },
   { num: '16', name: 'Firebase', nameAr: 'الـ Backend جاهز', color: C.blue.c, bg: C.blue.b, points: ['ما هو Firebase','Firebase Console','Firebase CLI installation','FlutterFire CLI','flutterfire configure','firebase_core package','Firebase.initializeApp()','Firebase Authentication','Email & Password Auth','createUserWithEmailAndPassword','signInWithEmailAndPassword','signOut()','currentUser'] },
-  { num: '17', name: 'Final Projects', nameAr: 'مشاريع التخرج', color: C.green.c, bg: C.green.b, points: ['E-Commerce App','Chat App with Firebase','News App with REST API','Graduation Project','تخطيط المشروع','تصميم الـ UI/UX','اختيار الـ Architecture','النشر على Play Store','النشر على App Store','استمرار التعلم'] }
+  { num: '17', name: 'Responsive Design', nameAr: 'تصميم متجاوب', color: C.pink.c, bg: C.pink.b, points: ['MediaQuery','LayoutBuilder','Flexible & Expanded','OrientationBuilder','ResponsiveBuilder patterns','Platform-aware widgets','Adaptive layouts'] },
+  { num: '18', name: 'Final Projects', nameAr: 'مشاريع التخرج', color: C.green.c, bg: C.green.b, points: ['E-Commerce App','Chat App with Firebase','News App with REST API','Graduation Project','تخطيط المشروع','تصميم الـ UI/UX','اختيار الـ Architecture','النشر على Play Store','النشر على App Store','استمرار التعلم'] }
 ];
 
 const levels: any = {
@@ -148,6 +150,7 @@ const chapterDurations: Record<string, number> = {
   'Async / Await / Future':  1,
   'REST APIs':               2,
   'Firebase':                2,
+  'Responsive Design':       2,
   'Final Projects':          2
 };
 
@@ -451,6 +454,10 @@ function setView(newView: any) {
   view = newView;
   renderSidebar();
   renderMain();
+  // Close sidebar on mobile after selection
+  if (window.innerWidth <= 768) {
+    (window as any).closeSidebar?.();
+  }
 }
 
 // Init — DOM is already loaded since this script is at end of body
